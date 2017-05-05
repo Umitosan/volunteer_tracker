@@ -52,4 +52,16 @@ describe('Volunteer') do
     end
   end
 
+  describe("#add_project") do
+    it("adds a project id to a volunteer in the database") do
+      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})
+      test_volunteer.save
+      test_project = Project.new({:title => 'plant trees', :id => nil})
+      test_project.save
+      test_volunteer.add_project(test_project.id)
+      pg_results = DB.exec("SELECT * FROM volunteers WHERE id = #{test_volunteer.id};")
+      expect(pg_results[0]['project_id'].to_i).to(eq(test_project.id))
+    end
+  end
+
 end

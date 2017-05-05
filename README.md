@@ -47,17 +47,16 @@ You can also clone this repository to your machine: navigate to the file path in
 
 | behavior |  input   |  output  |
 |----------|:--------:|:--------:|
-
 | The app allows the user to create new projects | user enters a project title in an input field and clicks the "Add" button | the page confirms the addition was successful |
 | The app allows the user to view all projects | user clicks the "view all projects" link | a new webpage appears, listing all available projects |
 | The app allows the user to update a project's title | user clicks a link with the specific project title, on a new page the user then input new text and clicks an "update" button | the page confirms the update to the project was successful |
 | The app allows the user to delete projects | the user selects a project link, then clicks a "remove" button | the project is removed from the list and a confirmation is shown on the page |
-
+||||
 | The app allows the user to create new volunteers | user enters a volunteer's name in an input field and clicks the "Add" button | the page confirms the addition was successful |
 | The app allows the user to view all volunteers| user clicks the "view all volunteers" link | a new webpage appears, listing all available volunteers |
 | The app allows the user to update a volunteer's name | user clicks a link with the specific volunteer name, on a new page the user then input new text and clicks an "update" button | the page confirms the update to the project was successful |
 | The app allows the user to delete volunteers | the user selects a volunteer's link, then clicks a "remove" button | the project is removed from the list and a confirmation is shown on the page |
-
+||||
 | The app allows the user to add a volunteers to a project | user click on a volunteer's link from a list, click a "add a project" button, selects a project from a dropdown list, and clicks the "confirm" button | the user is added to the project in the database and a confirmation is shown to the user on the page |
 | The app allows the user to view all the volunteers associated with a specific project | user clicks on a project's link from a list | a new page displays the project title and all volunteers associated with it |
 

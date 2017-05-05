@@ -10,8 +10,8 @@ class Volunteer
     returned_volunteers = DB.exec("SELECT * FROM volunteers;")
     volunteer_hashes_arr = []
     returned_volunteers.each() do |tuple|
-      name = tuple["name"]
-      id = tuple["id"].to_i()
+      name = tuple['name']
+      id = tuple['id'].to_i()
       volunteer_hashes_arr.push(Volunteer.new({:name => name, :id => id}))
     end
     volunteer_hashes_arr
@@ -19,7 +19,7 @@ class Volunteer
 
   def save
     pg_result = DB.exec("INSERT INTO volunteers (name) VALUES ('#{@name}') RETURNING id;")
-    @id = pg_result[0]["id"].to_i()
+    @id = pg_result[0]['id'].to_i()
   end
 
   def update(attr_hash)
@@ -30,6 +30,11 @@ class Volunteer
 
   def delete
     DB.exec("DELETE FROM volunteers WHERE id = #{self.id()};")
+  end
+
+  def add_project(project_id)
+    @id = self.id
+    DB.exec("UPDATE volunteers SET project_id = '#{project_id}' WHERE id = #{@id};")
   end
 
 end
