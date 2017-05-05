@@ -32,4 +32,13 @@ describe('Volunteer') do
     end
   end
 
+  describe("#update") do
+    it("updates a volunteer in the database with new info") do
+      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})
+      test_volunteer.save
+      test_volunteer.update({:name => "Meatloaf"})
+      expect(test_volunteer.name).to(eq("Meatloaf"))
+    end
+  end
+
 end

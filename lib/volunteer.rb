@@ -22,7 +22,10 @@ class Volunteer
     @id = pg_result[0]["id"].to_i()
   end
 
-  def update
+  def update(attr_hash)
+    @name = attr_hash[:name]
+    @id = self.id
+    DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
   end
 
   def delete
