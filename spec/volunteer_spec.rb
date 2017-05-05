@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'project'
 
 
 describe('Volunteer') do
@@ -17,12 +18,11 @@ describe('Volunteer') do
     end
   end
 
-
-  # describe('.all') do
-  #   it("will start with no volunteers") do
-  #     expect(Volunteer.all).to(eq([]))
-  #   end
-  # end
+  describe('.all') do
+    it("will start with no volunteers") do
+      expect(Volunteer.all).to(eq([]))
+    end
+  end
 
 end
 
