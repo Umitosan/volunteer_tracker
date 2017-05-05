@@ -39,6 +39,6 @@ describe('view volunteer status', {:type => :feature}) do
     fill_in('name', :with =>'Frankie')
     click_button('Add volunteer')
     click_link('Frankie')
-    expect(page).to(have_content(nil))
+    expect(page).to(have_content("doesn't have a project yet"))
   end
 end

@@ -1,4 +1,9 @@
-<h3>Volunteer Status<h3>
+<h2>Volunteer Status<h2>
 <hr>
-<h3>Name: <%= @found_volunteer.name %></h3>
-<h3>Project: <%= @found_project %></h3>
+<h2>Name: <%= @found_volunteer.name %></h2>
+
+<% if @proj_title  == nil %>
+  <h3>Project: <em><%= @found_volunteer.name %></em> doesn't have a project yet.</h3>
+<% else %>
+  <h3>Project: <%= @proj_title %></h3>
+<% end %>
