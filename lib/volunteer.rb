@@ -1,19 +1,20 @@
 class Volunteer
-  attr_accessor(:name)
+  attr_accessor(:name, :id)
 
-  def initialize(name)
-    @name = name
+  def initialize(init_hash)
+    @name = init_hash['name']
+    @id = init_hash['id']
   end
 
-  def all
+  def self.all
   end
 
-  def add
+  def save
   end
 
   def update
   end
-  
+
   def delete
   end
 

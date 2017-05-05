@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
-require './lib/volunteer_tracker'
+require './lib/volunteer'
+require './lib/project'
 require 'pry'
 
 also_reload('lib/**/*.rb')

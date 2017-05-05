@@ -1,14 +1,15 @@
 class Project
-  attr_accessor(:name)
+  attr_accessor(:title, :id)
 
-  def initialize(name)
-    @name = name
+  def initialize(title)
+    @title = title
+    @id = nil
+  end
+
+  def save
   end
 
   def all
-  end
-
-  def add
   end
 
   def update
