@@ -22,4 +22,10 @@ class Project
     @id = pg_result[0]["id"].to_i()
   end
 
+  def update(attr_hash)
+    @title = attr_hash[:title]
+    @id = self.id
+    DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
+  end
+
 end
