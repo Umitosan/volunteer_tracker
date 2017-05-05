@@ -5,12 +5,12 @@ Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
 
-# describe("the phrase parser path", {:type => :feature}) do
-#   it("processes the user input and returns correct message if its a palindrome") do
-#     visit("/")
-#     fill_in("phrase1", :with => "madam")
-#     fill_in("phrase2", :with => "anagram")
-#     click_button("what am i?")
-#     expect(page).to have_content("'madam' is a palindrome")
+# describe('adding a new list', {:type => :feature}) do
+#   it('allows a user to click a list to see the tasks and details for it') do
+#     visit('/')
+#     click_link('Add New List')
+#     fill_in('name', :with =>'Epicodus Work')
+#     click_button('Add List')
+#     expect(page).to have_content('Success!')
 #   end
 # end
