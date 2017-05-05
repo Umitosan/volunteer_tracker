@@ -50,4 +50,15 @@ describe('project') do
     end
   end
 
+  describe(".find_by_id") do
+    it("finds a project in the database using its id") do
+      test_project1 = Project.new({:title => 'plant trees', :id => nil})
+      test_project1.save
+      test_project2 = Project.new({:title => 'serve at the soup kitchen', :id => nil})
+      test_project2.save
+      returned_project = Project.find_by_id(test_project2.id)
+      expect(returned_project.id).to(eq(test_project2.id))
+    end
+  end
+
 end
