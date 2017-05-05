@@ -15,13 +15,13 @@ describe('project') do
       expect(test_project.id).to(eq(nil))
     end
   end
-  #
-  # describe('.all') do
-  #   it("will start with no volunteers") do
-  #     expect(Volunteer.all).to(eq([]))
-  #   end
-  # end
-  #
+
+  describe('.all') do
+    it("will start with no projects") do
+      expect(Project.all).to(eq([]))
+    end
+  end
+
   # describe('#save') do
   #   it("will save the volunteer to the database") do
   #     test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})

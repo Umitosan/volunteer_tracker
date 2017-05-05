@@ -7,14 +7,14 @@ class Project
   end
 
   def self.all
-    returned_volunteers = DB.exec("SELECT * FROM volunteers;")
-    volunteer_hashes_arr = []
-    returned_volunteers.each() do |tuple|
-      name = tuple["name"]
+    returned_projects = DB.exec("SELECT * FROM projects;")
+    projects_hashes_arr = []
+    returned_projects.each() do |tuple|
+      name = tuple["title"]
       id = tuple["id"].to_i()
-      volunteer_hashes_arr.push(Volunteer.new({:name => name, :id => id}))
+      vprojects_hashes_arr.push(Project.new({:name => title, :id => id}))
     end
-    volunteer_hashes_arr
+    projects_hashes_arr
   end
 
 end
