@@ -64,4 +64,15 @@ describe('Volunteer') do
     end
   end
 
+  describe(".find_by_id") do
+    it("finds a volunteer in the database using its id") do
+      test_volunteer1 = Volunteer.new({:name => 'Taylor Swift', :id => nil})
+      test_volunteer1.save
+      test_volunteer2 = Volunteer.new({:name => 'Frank Zappa', :id => nil})
+      test_volunteer2.save
+      returned_volunteer = Volunteer.find_by_id(test_volunteer2.id)
+      expect(returned_volunteer.id).to(eq(test_volunteer2.id))
+    end
+  end
+
 end

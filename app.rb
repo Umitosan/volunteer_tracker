@@ -41,3 +41,13 @@ post('/new_project') do
   @all_projects = Project.all
   erb(:projects_home)
 end
+
+get("/volunteers/:id") do
+  id = params["id"]
+  erb(:current_volunteer)
+end
+
+get("/projects/:id") do
+  id = params["id"]
+  erb(:current_project)
+end

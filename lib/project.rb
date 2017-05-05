@@ -32,4 +32,8 @@ class Project
     DB.exec("DELETE FROM projects WHERE id = #{self.id()};")
   end
 
+  def self.find_by_id(proj_id)
+
+  end
+
 end

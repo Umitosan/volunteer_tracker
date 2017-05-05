@@ -18,8 +18,19 @@ describe('adding a new project', {:type => :feature}) do
   it('allows a user to input a project name and add it to the list') do
     visit('/')
     click_link('view/add projects')
-    fill_in('title', :with =>'neighborhood blooddrive')
+    fill_in('title', :with =>'neighborhood blood-drive')
     click_button('Add Project')
-    expect(page).to(have_content('neighborhood blooddrive'))
+    expect(page).to(have_content('neighborhood blood-drive'))
   end
 end
+
+# describe('view volunteer', {:type => :feature}) do
+#   it("allows a user to click a link to view a single volunteer's status") do
+#     visit('/')
+#     click_link('view/add volunteers')
+#     fill_in('name', :with =>'Frankie')
+#     click_button('Add volunteer')
+#     click_link('Frankie')
+#     expect(page).to(have_content('Frankie'))
+#   end
+# end

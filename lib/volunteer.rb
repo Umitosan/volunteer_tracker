@@ -37,4 +37,14 @@ class Volunteer
     DB.exec("UPDATE volunteers SET project_id = '#{project_id}' WHERE id = #{@id};")
   end
 
+  def self.find_by_id(id)
+    found_volunteer = nil
+    Volunteer.all.each do |vol|
+      if vol.id = id
+        found_volunteer = vol
+      end
+    end
+    found_volunteer
+  end
+
 end

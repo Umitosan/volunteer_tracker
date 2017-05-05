@@ -10,10 +10,10 @@
     </form>
   </div>
   <div class="col-sm-6">
-    <h4>projects list:</h4>
+    <h3>Current Projects</h3>
     <ul>
       <% @all_projects.each do |proj| %>
-      <li><a><%= proj.title %><a/></li>
+      <li><a href="/projects/<%=proj.id%>"><%= proj.title %><a/></li>
       <% end %>
     </ul>
   </div>
