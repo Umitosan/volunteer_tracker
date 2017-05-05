@@ -44,10 +44,11 @@ end
 
 get("/volunteers/:id") do
   id = params["id"]
+  @found_volunteer = Volunteer.find_by_id(id)
   erb(:current_volunteer)
 end
 
-get("/projects/:id") do
-  id = params["id"]
-  erb(:current_project)
-end
+# get("/projects/:id") do
+#   id = params["id"]
+#   erb(:current_project)
+# end
