@@ -9,12 +9,12 @@ describe('project') do
     end
   end
 
-  # describe("#id") do
-  #   it("will return the id of a volunteer") do
-  #     test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})
-  #     expect(test_volunteer.id).to(eq(nil))
-  #   end
-  # end
+  describe("#id") do
+    it("will return the id of a project") do
+      test_project = Project.new({:title => 'planting trees', :id => nil})
+      expect(test_project.id).to(eq(nil))
+    end
+  end
   #
   # describe('.all') do
   #   it("will start with no volunteers") do
