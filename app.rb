@@ -45,6 +45,7 @@ end
 get("/volunteers/:id") do
   id = params["id"]
   @found_volunteer = Volunteer.find_by_id(id)
+  @found_project
   erb(:current_volunteer)
 end
 

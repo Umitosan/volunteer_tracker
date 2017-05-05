@@ -47,4 +47,13 @@ class Volunteer
     found_volunteer
   end
 
+  def get_vol_project()
+    found_project = nil
+    @id = self.id
+    pg_result = DB.exec("SELECT * FROM volunteers WHERE id = #{@id};")
+    proj_id = pg_result[0]['project_id'].to_i
+    found_project = Project.find_by_id(proj_id)
+    found_project
+  end
+
 end

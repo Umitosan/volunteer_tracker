@@ -75,4 +75,16 @@ describe('Volunteer') do
     end
   end
 
+  describe("get_vol_project") do
+    it("finds the project associated with a given volunteers") do
+      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})
+      test_volunteer.save
+      test_project = Project.new({:title => 'plant trees', :id => nil})
+      test_project.save
+      test_volunteer.add_project(test_project.id)
+      volunteers_project = test_volunteer.get_vol_project
+      expect(volunteers_project.id).to(eq(test_project.id))
+    end
+  end
+
 end

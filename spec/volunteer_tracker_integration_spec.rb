@@ -24,13 +24,21 @@ describe('adding a new project', {:type => :feature}) do
   end
 end
 
-describe('view volunteer', {:type => :feature}) do
-  it("allows a user to click a link to view a single volunteer's status") do
+describe('view volunteer status', {:type => :feature}) do
+  it("allows a user to click a link to view a single volunteer's name") do
     visit('/')
     click_link('view/add volunteers')
     fill_in('name', :with =>'Frankie')
     click_button('Add volunteer')
     click_link('Frankie')
     expect(page).to(have_content('Frankie'))
+  end
+  it("allows a user to click a link to view a single volunteer's project") do
+    visit('/')
+    click_link('view/add volunteers')
+    fill_in('name', :with =>'Frankie')
+    click_button('Add volunteer')
+    click_link('Frankie')
+    expect(page).to(have_content(nil))
   end
 end
