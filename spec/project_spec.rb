@@ -1,4 +1,4 @@
-require 'volunteer'
+require 'project'
 
 describe('project') do
 
@@ -22,31 +22,32 @@ describe('project') do
     end
   end
 
-  # describe('#save') do
-  #   it("will save the volunteer to the database") do
-  #     test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})
-  #     test_volunteer.save
-  #     expect(Volunteer.all[0].id).to(eq(test_volunteer.id))
-  #   end
-  # end
+  describe('#save') do
+    it("will save the project to the database") do
+      test_project = Project.new({:title => 'planting trees', :id => nil})
+      test_project.save
+      expect(Project.all[0].id).to(eq(test_project.id))
+    end
+  end
+
   #
   # describe("#update") do
-  #   it("updates a volunteer in the database with new info") do
-  #     test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})
-  #     test_volunteer.save
-  #     test_volunteer.update({:name => "Meatloaf"})
-  #     expect(test_volunteer.name).to(eq("Meatloaf"))
+  #   it("updates a project in the database with new info") do
+  #     test_project = project.new({:name => 'Taylor Swift', :id => nil})
+  #     test_project.save
+  #     test_project.update({:name => "Meatloaf"})
+  #     expect(test_project.name).to(eq("Meatloaf"))
   #   end
   # end
   #
   # describe("#delete") do
-  #   it("deletes a volunteer from the database") do
-  #     test_volunteer1 = Volunteer.new({:name => 'Taylor Swift', :id => nil})
-  #     test_volunteer1.save
-  #     test_volunteer2 = Volunteer.new({:name => 'Meatloaf', :id => nil})
-  #     test_volunteer2.save
-  #     test_volunteer1.delete
-  #     expect(Volunteer.all[0].name).to(eq('Meatloaf'))
+  #   it("deletes a project from the database") do
+  #     test_project1 = project.new({:name => 'Taylor Swift', :id => nil})
+  #     test_project1.save
+  #     test_project2 = project.new({:name => 'Meatloaf', :id => nil})
+  #     test_project2.save
+  #     test_project1.delete
+  #     expect(project.all[0].name).to(eq('Meatloaf'))
   #   end
   # end
 

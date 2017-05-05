@@ -10,11 +10,16 @@ class Project
     returned_projects = DB.exec("SELECT * FROM projects;")
     projects_hashes_arr = []
     returned_projects.each() do |tuple|
-      name = tuple["title"]
+      title = tuple["title"]
       id = tuple["id"].to_i()
-      vprojects_hashes_arr.push(Project.new({:name => title, :id => id}))
+      projects_hashes_arr.push(Project.new({:title => title, :id => id}))
     end
     projects_hashes_arr
+  end
+
+  def save
+    pg_result = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id;")
+    @id = pg_result[0]["id"].to_i()
   end
 
 end
