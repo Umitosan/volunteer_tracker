@@ -52,5 +52,4 @@ describe('Volunteer') do
     end
   end
 
-
 end

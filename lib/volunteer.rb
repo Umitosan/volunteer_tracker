@@ -32,5 +32,4 @@ class Volunteer
     DB.exec("DELETE FROM volunteers WHERE id = #{self.id()};")
   end
 
-
 end
