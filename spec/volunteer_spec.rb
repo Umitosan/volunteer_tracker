@@ -10,10 +10,13 @@ describe('Volunteer') do
     end
   end
 
-  #
-  # describe("#id") do
-  #
-  # end
+  describe("#id") do
+    it("will return the id of a volunteer") do
+      test_volunteer = Volunteer.new({'name' => 'Taylor Swift', 'id' => nil})
+      expect(test_volunteer.id).to(eq(nil))
+    end
+  end
+
 
   # describe('.all') do
   #   it("will start with no volunteers") do
