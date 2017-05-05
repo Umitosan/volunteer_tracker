@@ -1,26 +1,22 @@
 <h3>Welcome to the volunteer admin page</h3>
 <br>
 <br>
-<div class="row">
 
-  <div class="col-sm-6">
-    <form action="/new_project" method="post">
-      <div class="form-group">
-        <label for="title">New project</label>
-        <input name="title" class="form-control" type="text">
-      </div>
-      <button type="submit" class="btn btn-info">Add Project</button>
-    </form>
-  </div>
+<div class="container">
 
-  <div class="col-sm-6">
-    <form action="/new_volunteer" method="post">
-      <div class="form-group">
-        <label for="name">New volunteer</label>
-        <input name="name" class="form-control" type="text">
-      </div>
-      <button type="submit" class="btn btn-success">Add volunteer</button>
-    </form>
+  <div class="row">
+    <div id="home_col_1" class="col-sm-6">
+      <img src="/img/volunteers.jpg" alt="planting a tree" style="max-height: 350px"/>
+      <br>
+      <br>
+      <h3><a href="/volunteers_home">view/add volunteers</a></h3>
+    </div>
+    <div id="home_col_2" class="col-sm-6">
+      <img src="/img/planting.jpg" alt="voluteers" style="max-height: 350px"/>
+      <br>
+      <br>
+      <h3><a href="/projects_home">view/add projects</a></h3>
+    </div>
   </div>
 
 </div>

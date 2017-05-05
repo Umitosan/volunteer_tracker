@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-sm-6">
+    <form action="/new_project" method="post">
+      <div class="form-group">
+        <label for="title">New project</label>
+        <input name="title" class="form-control" type="text">
+      </div>
+      <button type="submit" class="btn btn-info">Add Project</button>
+      <a href="/" style="padding-left: 20px;">Home</a>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <h4>projects list:</h4>
+    <ul>
+      <% @all_projects.each do |proj| %>
+      <li><a><%= proj.title %><a/></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

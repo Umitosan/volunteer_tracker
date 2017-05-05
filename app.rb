@@ -7,14 +7,37 @@ require 'pg'
 
 also_reload('lib/**/*.rb')
 
+DB = PG.connect({:dbname => 'volunteer_tracker'})
+
+DB.exec("DELETE FROM volunteers *;")
+DB.exec("DELETE FROM projects *;")
+
 get('/') do
   erb(:index)
 end
 
-post('/new_project') do
-  erb(:new_project)
+get('/volunteers_home') do
+  @all_volunteers = Volunteer.all
+  erb(:volunteers_home)
+end
+
+get('/projects_home') do
+  @all_projects = Project.all
+  erb(:projects_home)
 end
 
 post('/new_volunteer') do
-  erb(:new_volunteer)
+  new_name = params["name"]
+  new_volunteer = Volunteer.new({:name => new_name, :id => nil})
+  new_volunteer.save()
+  @all_volunteers = Volunteer.all
+  erb(:volunteers_home)
+end
+
+post('/new_project') do
+  new_title = params["title"]
+  new_project = Project.new({:title => new_title, :id => nil})
+  new_project.save()
+  @all_projects = Project.all
+  erb(:projects_home)
 end

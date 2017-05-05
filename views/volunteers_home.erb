@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-sm-6">
+    <form action="/new_volunteer" method="post">
+      <div class="form-group">
+        <label for="name">New volunteer</label>
+        <input name="name" class="form-control" type="text">
+      </div>
+      <button type="submit" class="btn btn-success">Add volunteer</button>
+      <a href="/" style="padding-left: 20px;">Home</a>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <h4>volunteers list:</h4>
+    <ul>
+      <% @all_volunteers.each do |vol| %>
+      <li><a><%= vol.name %><a/></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
