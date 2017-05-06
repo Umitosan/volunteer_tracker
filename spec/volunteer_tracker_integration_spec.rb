@@ -19,7 +19,7 @@ describe('adding a new project', {:type => :feature}) do
     visit('/')
     click_link('view/add projects')
     fill_in('title', :with =>'neighborhood blood-drive')
-    click_button('Add Project')
+    click_button('Add project')
     expect(page).to(have_content('neighborhood blood-drive'))
   end
 end
@@ -49,8 +49,8 @@ describe('view project status page', {:type => :feature}) do
     click_link('view/add projects')
     fill_in('title', :with =>'neighborhood blood-drive')
     click_button('Add project')
-    click_link('Frankie')
-    expect(page).to(have_content('Frankie'))
+    click_link('neighborhood blood-drive')
+    expect(page).to(have_content('neighborhood blood-drive'))
   end
   it("allows a user to click a link to view all the volunteers for a project") do
     visit('/')
