@@ -13,7 +13,8 @@ class Volunteer
     returned_volunteers.each() do |tuple|
       name = tuple['name']
       id = tuple['id'].to_i()
-      volunteer_hashes_arr.push(Volunteer.new({:name => name, :id => id}))
+      proj_id = tuple['project_id'].to_i()
+      volunteer_hashes_arr.push(Volunteer.new({:name => name, :id => id, :project_id => proj_id}))
     end
     volunteer_hashes_arr
   end
@@ -35,7 +36,7 @@ class Volunteer
 
   def add_project(project_id)
     @id = self.id
-    DB.exec("UPDATE volunteers SET project_id = '#{project_id}' WHERE id = #{@id};")
+    DB.exec("UPDATE volunteers SET project_id = #{project_id} WHERE id = #{@id};")
   end
 
   def self.find_by_id(id)
