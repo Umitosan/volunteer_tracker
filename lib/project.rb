@@ -46,9 +46,7 @@ class Project
     found_vols = []
     @id = self.id
     pg_results = DB.exec("SELECT * FROM volunteers WHERE project_id = #{@id};")
-    pg_results.each do |tuple|
-      vol_id = tuple['project_id'].to_i
-      vol = Volunteer.find_by_id(vol_id)
+    pg_results.each do |vol|
       found_vols.push(vol)
     end
     found_vols
