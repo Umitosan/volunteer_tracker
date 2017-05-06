@@ -24,7 +24,7 @@ describe('adding a new project', {:type => :feature}) do
   end
 end
 
-describe('view volunteer status', {:type => :feature}) do
+describe('view volunteer status page', {:type => :feature}) do
   it("allows a user to click a link to view a single volunteer's name") do
     visit('/')
     click_link('view/add volunteers')
@@ -40,5 +40,24 @@ describe('view volunteer status', {:type => :feature}) do
     click_button('Add volunteer')
     click_link('Frankie')
     expect(page).to(have_content("doesn't have a project yet"))
+  end
+end
+
+describe('view project status page', {:type => :feature}) do
+  it("allows a user to click a link to view a single project's name") do
+    visit('/')
+    click_link('view/add projects')
+    fill_in('title', :with =>'neighborhood blood-drive')
+    click_button('Add project')
+    click_link('Frankie')
+    expect(page).to(have_content('Frankie'))
+  end
+  it("allows a user to click a link to view all the volunteers for a project") do
+    visit('/')
+    click_link('view/add projects')
+    fill_in('title', :with =>'neighborhood blood-drive')
+    click_button('Add project')
+    click_link('neighborhood blood-drive')
+    expect(page).to(have_content("doesn't have any volunteers yet"))
   end
 end

@@ -1,9 +1,10 @@
 class Volunteer
-  attr_accessor(:name, :id)
+  attr_accessor(:name, :id, :project_id)
 
   def initialize(init_hash)
     @name = init_hash[:name]
     @id = init_hash[:id]
+    @project_id = init_hash[:project_id]
   end
 
   def self.all
@@ -50,8 +51,12 @@ class Volunteer
   def get_vol_project()
     found_project = nil
     @id = self.id
-    pg_result = DB.exec("SELECT * FROM volunteers WHERE id = #{@id};")
-    proj_id = pg_result[0]['project_id'].to_i
+    pg_results = DB.exec("SELECT * FROM volunteers WHERE id = #{@id};")
+    if (pg_results[0]['project_id'] == nil)
+      proj_id = pg_results[0]['project_id']
+    else
+      proj_id = pg_results[0]['project_id'].to_i
+    end
     found_project = Project.find_by_id(proj_id)
     found_project
   end

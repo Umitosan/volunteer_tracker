@@ -6,14 +6,14 @@ describe('Volunteer') do
 
   describe("#name") do
     it("will return the name of the volunteer") do
-      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})
+      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
       expect(test_volunteer.name).to(eq("Taylor Swift"))
     end
   end
 
   describe("#id") do
     it("will return the id of a volunteer") do
-      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})
+      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
       expect(test_volunteer.id).to(eq(nil))
     end
   end
@@ -26,15 +26,23 @@ describe('Volunteer') do
 
   describe('#save') do
     it("will save the volunteer to the database") do
-      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})
+      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
       test_volunteer.save
       expect(Volunteer.all[0].id).to(eq(test_volunteer.id))
     end
   end
 
+  describe('#project_id') do
+    it("will save the volunteer to the database") do
+      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
+      test_volunteer.save
+      expect(Volunteer.all[0].project_id).to(eq(nil))
+    end
+  end
+
   describe("#update") do
     it("updates a volunteer in the database with new info") do
-      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})
+      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
       test_volunteer.save
       test_volunteer.update({:name => "Meatloaf"})
       expect(test_volunteer.name).to(eq("Meatloaf"))
@@ -43,9 +51,9 @@ describe('Volunteer') do
 
   describe("#delete") do
     it("deletes a volunteer from the database") do
-      test_volunteer1 = Volunteer.new({:name => 'Taylor Swift', :id => nil})
+      test_volunteer1 = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
       test_volunteer1.save
-      test_volunteer2 = Volunteer.new({:name => 'Meatloaf', :id => nil})
+      test_volunteer2 = Volunteer.new({:name => 'Meatloaf', :id => nil, :project_id => nil})
       test_volunteer2.save
       test_volunteer1.delete
       expect(Volunteer.all[0].name).to(eq('Meatloaf'))
@@ -54,7 +62,7 @@ describe('Volunteer') do
 
   describe("#add_project") do
     it("adds a project id to a volunteer in the database") do
-      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})
+      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
       test_volunteer.save
       test_project = Project.new({:title => 'plant trees', :id => nil})
       test_project.save
@@ -66,9 +74,9 @@ describe('Volunteer') do
 
   describe(".find_by_id") do
     it("finds a volunteer in the database using its id") do
-      test_volunteer1 = Volunteer.new({:name => 'Taylor Swift', :id => nil})
+      test_volunteer1 = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
       test_volunteer1.save
-      test_volunteer2 = Volunteer.new({:name => 'Frank Zappa', :id => nil})
+      test_volunteer2 = Volunteer.new({:name => 'Frank Zappa', :id => nil, :project_id => nil})
       test_volunteer2.save
       returned_volunteer = Volunteer.find_by_id(test_volunteer2.id)
       expect(returned_volunteer.id).to(eq(test_volunteer2.id))
@@ -77,7 +85,7 @@ describe('Volunteer') do
 
   describe("get_vol_project") do
     it("finds the project associated with a given volunteers") do
-      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil})
+      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
       test_volunteer.save
       test_project = Project.new({:title => 'plant trees', :id => nil})
       test_project.save

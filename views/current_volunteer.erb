@@ -2,8 +2,15 @@
 <hr>
 <h2>Name: <%= @found_volunteer.name %></h2>
 
-<% if @proj_title  == nil %>
-  <h3>Project: <em><%= @found_volunteer.name %></em> doesn't have a project yet.</h3>
+<% if (@proj_title  == nil) %>
+  <h3>"<em><%= @found_volunteer.name %>"</em> doesn't have a project yet.</h3>
+  <h4><a href="/add_proj_to_vol/<%=@found_volunteer.id%>">assign to a project</a></h4>
 <% else %>
   <h3>Project: <%= @proj_title %></h3>
 <% end %>
+
+<br>
+<br>
+<div class="center">
+  <a href="/"><button class="btn btn-default">Return Home</button></a>
+</div>

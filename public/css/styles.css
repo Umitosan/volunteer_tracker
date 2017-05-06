@@ -2,7 +2,11 @@
   text-align: center;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5 {
+  text-align: center;
+}
+
+.center {
   text-align: center;
 }
 
@@ -13,4 +17,13 @@ ul {
 li {
   font-family: sans-serif;
   font-size: 30px;
+}
+
+.green_text {
+  color: green;
+}
+
+.home {
+  padding-left: 30px;
+  padding-top: 30px;
 }

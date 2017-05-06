@@ -42,5 +42,16 @@ class Project
     found_project
   end
 
+  def get_vols_on_proj
+    found_vols = nil
+    @id = self.id
+    pg_results = DB.exec("SELECT * FROM volunteers WHERE project_id = #{@id};")
+    pg_results.each do |tuple|
+      vol_id = tuple[0]['project_id'].to_i
+      vol = Volunteers.find_by_id(vol_id)
+      found_vols.push(vol)
+    end
+    found_vols
+  end
 
 end
