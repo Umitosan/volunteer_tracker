@@ -35,7 +35,7 @@ class Project
   def self.find_by_id(id)
     found_project = nil
     Project.all.each do |proj|
-      if proj.id = id
+      if (proj.id == id)
         found_project = proj
       end
     end

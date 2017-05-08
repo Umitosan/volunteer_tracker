@@ -43,7 +43,7 @@ class Volunteer
   def self.find_by_id(id)
     found_volunteer = nil
     Volunteer.all.each do |vol|
-      if vol.id = id
+      if (vol.id == id)
         found_volunteer = vol
       end
     end

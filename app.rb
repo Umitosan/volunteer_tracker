@@ -28,8 +28,10 @@ end
 
 post('/new_volunteer') do
   new_name = params["name"]
-  new_volunteer = Volunteer.new({:name => new_name, :id => nil})
-  new_volunteer.save()
+  if (new_name.length != 0)
+    new_volunteer = Volunteer.new({:name => new_name, :id => nil})
+    new_volunteer.save()
+  end
   @all_volunteers = Volunteer.all
   erb(:volunteers_home)
 end
@@ -60,6 +62,8 @@ end
 post('/add_proj_to_vol/:vol_id') do
   proj_id = params['proj_id'].to_i
   vol_id = params['vol_id'].to_i
+  @found_proj = Project.find_by_id(proj_id)
+  @found_volunteer = Volunteer.find_by_id(vol_id)
   DB.exec("UPDATE volunteers SET project_id = #{proj_id} WHERE id = #{vol_id};")
   erb(:project_assignment)
 end

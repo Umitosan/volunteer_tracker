@@ -26,9 +26,11 @@ describe('Volunteer') do
 
   describe('#save') do
     it("will save the volunteer to the database") do
-      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
-      test_volunteer.save
-      expect(Volunteer.all[0].id).to(eq(test_volunteer.id))
+      test_volunteer1 = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
+      test_volunteer1.save
+      test_volunteer2 = Volunteer.new({:name => 'Dean Ween', :id => nil, :project_id => nil})
+      test_volunteer2.save
+      expect(Volunteer.all[0].id).to(eq(test_volunteer1.id))
     end
   end
 
