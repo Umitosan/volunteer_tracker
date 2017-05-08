@@ -56,7 +56,6 @@ get('/projects/:id') do
   id = params["id"].to_i
   @found_proj = Project.find_by_id(id)
   @volunteers_list = @found_proj.get_vols_on_proj()
-binding.pry
   erb(:current_project)
 end
 
@@ -67,4 +66,12 @@ post('/add_project_to_volunteer/:vol_id') do
   @found_volunteer = Volunteer.find_by_id(vol_id)
   DB.exec("UPDATE volunteers SET project_id = #{proj_id} WHERE id = #{vol_id};")
   erb(:project_assignment)
+end
+
+get('/delete/:vol_id') do
+  vol_id = params['vol_id'].to_i
+  found_volunteer = Volunteer.find_by_id(vol_id)
+  found_volunteer.delete
+  @all_volunteers = Volunteer.all
+  erb(:volunteers_home)
 end

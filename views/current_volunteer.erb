@@ -8,7 +8,7 @@
   <% if (@all_projects.length == 0) %>
     <h4>...there are currently no projects to choose from</h4>
   <% else %>
-    <h5>( assign to a project using the selects below )</h5>
+    <h5>( assign a project using the selects below )</h5>
     <div class="center">
       <form action="/add_project_to_volunteer/<%=@found_volunteer.id%>" method="post">
         <div class="form-group">

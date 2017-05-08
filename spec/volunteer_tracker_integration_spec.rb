@@ -78,3 +78,15 @@ describe('view project status page', {:type => :feature}) do
     expect(page).to(have_content("doesn't have any volunteers yet"))
   end
 end
+
+describe('delete volunteer', {:type => :feature}) do
+  it("allows a user to delete a volunteer from the database using a button") do
+    visit('/')
+    click_link('view/add volunteers')
+    fill_in('name', :with =>'Frankie')
+    click_button('Add volunteer')
+    click_link('Frankie')
+    click_link('Remove Volunteer')
+    expect(page).not_to(have_content('Frankie'))
+  end
+end
