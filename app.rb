@@ -45,7 +45,7 @@ end
 get('/volunteers/:id') do
   id = params["id"].to_i
   @found_volunteer = Volunteer.find_by_id(id)
-  @proj_title = @found_volunteer.get_vol_project()
+  @proj_title = @found_volunteer.get_project_of_vol()
   @all_projects = Project.all
   erb(:current_volunteer)
 end

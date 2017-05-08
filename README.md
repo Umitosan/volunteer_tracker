@@ -1,4 +1,4 @@
-# _Children's dictionary_
+# _Volunteer Tracker_
 
 #### Independent project for Epicodus - 5/5/17
 
