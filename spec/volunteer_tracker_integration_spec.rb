@@ -33,13 +33,30 @@ describe('view volunteer status page', {:type => :feature}) do
     click_link('Frankie')
     expect(page).to(have_content('Frankie'))
   end
-  it("allows a user to click a link to view a single volunteer's project") do
+  it("displys a message if the volunteer has no project assigned yet") do
     visit('/')
     click_link('view/add volunteers')
     fill_in('name', :with =>'Frankie')
     click_button('Add volunteer')
     click_link('Frankie')
     expect(page).to(have_content("doesn't have a project yet"))
+  end
+  it("displays the project project for the selected user on the page") do
+    visit('/')
+    click_link('view/add volunteers')
+    fill_in('name', :with =>'Frankie')
+    click_button('Add volunteer')
+    click_link('Frankie')
+    click_link('Return Home')
+    click_link('view/add projects')
+    fill_in('title', :with =>'soup kitchen')
+    click_button('Add project')
+    click_link('Home')
+    click_link('view/add volunteers')
+    click_link('Frankie')
+    choose('soup kitchen')
+    click_button('update')
+    expect(page).to(have_content("soup kitchen"))
   end
 end
 

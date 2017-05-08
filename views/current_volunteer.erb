@@ -2,7 +2,7 @@
 <hr>
 <h2>Name: <%= @found_volunteer.name %></h2>
 
-<% if (@proj_title  == nil) %>
+<% if (@found_project  == nil) %>
   <h3>"<em><%= @found_volunteer.name %>"</em> doesn't have a project yet.</h3>
 
   <% if (@all_projects.length == 0) %>
@@ -13,7 +13,7 @@
       <form action="/add_proj_to_vol/<%=@found_volunteer.id%>" method="post">
         <div class="form-group">
           <% @all_projects.each do |proj| %>
-          <input type="radio" name="proj_id" value="<%=proj.id%>"><%= proj.title %></input><br>
+          <input id="<%=proj.title%>" type="radio" name="proj_id" value="<%=proj.id%>"><%= proj.title %></input><br>
           <% end %>
           <br>
         </div>
@@ -23,7 +23,7 @@
   <% end %>
 
 <% else %>
-  <h3>Project: <%= @proj_title %></h3>
+  <h3>Project: <%= @found_project.title %></h3>
 <% end %>
 
 <hr>
