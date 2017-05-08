@@ -12,6 +12,7 @@ h1, h2, h3, h4, h5 {
 
 ul {
   list-style: none;
+  text-align: center;
 }
 
 li {
@@ -21,6 +22,10 @@ li {
 
 .green_text {
   color: green;
+}
+
+.blue_text {
+  color: blue;
 }
 
 .home {

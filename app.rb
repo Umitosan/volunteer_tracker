@@ -56,10 +56,11 @@ get('/projects/:id') do
   id = params["id"].to_i
   @found_proj = Project.find_by_id(id)
   @volunteers_list = @found_proj.get_vols_on_proj()
+binding.pry
   erb(:current_project)
 end
 
-post('/add_proj_to_vol/:vol_id') do
+post('/add_project_to_volunteer/:vol_id') do
   proj_id = params['proj_id'].to_i
   vol_id = params['vol_id'].to_i
   @found_proj = Project.find_by_id(proj_id)

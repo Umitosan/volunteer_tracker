@@ -1,16 +1,16 @@
 <h2>Volunteer Status<h2>
 <hr>
-<h2>Name: <%= @found_volunteer.name %></h2>
+<h1 class="green_text"><b><%= @found_volunteer.name %></b></h1>
 
 <% if (@found_project  == nil) %>
-  <h3>"<em><%= @found_volunteer.name %>"</em> doesn't have a project yet.</h3>
+  <h5>( "<em><%= @found_volunteer.name %>"</em> doesn't have a project yet )</h5>
 
   <% if (@all_projects.length == 0) %>
-    <h4>...and there are currently no projects to choose from</h4>
+    <h4>...there are currently no projects to choose from</h4>
   <% else %>
-    <h4>assign to a project using the selects below</h4>
+    <h5>( assign to a project using the selects below )</h5>
     <div class="center">
-      <form action="/add_proj_to_vol/<%=@found_volunteer.id%>" method="post">
+      <form action="/add_project_to_volunteer/<%=@found_volunteer.id%>" method="post">
         <div class="form-group">
           <% @all_projects.each do |proj| %>
           <input id="<%=proj.title%>" type="radio" name="proj_id" value="<%=proj.id%>"><%= proj.title %></input><br>

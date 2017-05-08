@@ -1,14 +1,14 @@
 <h3>Project Status<h3>
 <hr>
-<h2> Title: <b class="green_text"><%= @found_proj.title %></b></h2>
+<h2><b class="green_text"><%= @found_proj.title %></b></h2>
 
-<% if @vol_name == nil %>
-  <h4>("<em><%= @found_proj.title %>"</em> - doesn't have any volunteers yet)</h4>
+<% if (@volunteers_list.length == 0) %>
+  <h5>("<em><%= @found_proj.title %>"</em> - doesn't have any volunteers yet)</h5>
 <% else %>
-  <h3>Volunteers on this project</h3>
+  <h4>Volunteers currently assigned:</h4>
   <ul>
     <% @volunteers_list.each do |vol| %>
-    <li> <%= vol.name %> </li>
+    <li class="blue_text center"><em><%= vol['name'] %></em></li>
     <% end %>
   </ul>
 <% end %>
