@@ -90,3 +90,15 @@ describe('delete volunteer', {:type => :feature}) do
     expect(page).not_to(have_content('Frankie'))
   end
 end
+
+describe('delete project', {:type => :feature}) do
+  it("allows a user to delete a project from the database using a button") do
+    visit('/')
+    click_link('view/add projects')
+    fill_in('title', :with => 'neighborhood blood-drive')
+    click_button('Add project')
+    click_link('neighborhood blood-drive')
+    click_link('Remove Project')
+    expect(page).not_to(have_content('neighborhood blood-drive'))
+  end
+end

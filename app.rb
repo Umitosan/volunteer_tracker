@@ -68,10 +68,19 @@ post('/add_project_to_volunteer/:vol_id') do
   erb(:project_assignment)
 end
 
-get('/delete/:vol_id') do
+get('/delete_vol/:vol_id') do
   vol_id = params['vol_id'].to_i
   found_volunteer = Volunteer.find_by_id(vol_id)
   found_volunteer.delete
   @all_volunteers = Volunteer.all
   erb(:volunteers_home)
+end
+
+get('/delete_proj/:proj_id') do
+  proj_id = params['proj_id'].to_i
+  found_project = Project.find_by_id(proj_id)
+  binding.pry
+  found_project.delete
+  @all_projects = Project.all
+  erb(:projects_home)
 end
