@@ -38,8 +38,10 @@ end
 
 post('/new_project') do
   new_title = params["title"]
-  new_project = Project.new({:title => new_title, :id => nil})
-  new_project.save()
+  if (new_title.length != 0)
+    new_project = Project.new({:title => new_title, :id => nil})
+    new_project.save()
+  end
   @all_projects = Project.all
   erb(:projects_home)
 end
@@ -55,9 +57,18 @@ end
 get('/projects/:id') do
   id = params["id"].to_i
   @found_proj = Project.find_by_id(id)
-  @volunteers_list = @found_proj.get_vols_on_proj()
+  @found_volunteers_list = @found_proj.get_vols_on_proj()
+  @all_volunteers = Volunteer.all
   erb(:current_project)
 end
+
+
+patch('/add_volunteers_to_project/:id') do
+  proj_id = params["id"].to_i
+
+  redirect("/projects/#{proj.id}")
+end
+
 
 post('/add_project_to_volunteer/:vol_id') do
   proj_id = params['proj_id'].to_i
@@ -79,7 +90,6 @@ end
 get('/delete_proj/:proj_id') do
   proj_id = params['proj_id'].to_i
   found_project = Project.find_by_id(proj_id)
-  binding.pry
   found_project.delete
   @all_projects = Project.all
   erb(:projects_home)
