@@ -62,17 +62,14 @@ get('/projects/:id') do
   erb(:current_project)
 end
 
-
-
-post('project_rename/:proj_id') do
+############
+patch('project_rename/:proj_id') do
   proj_id = params['proj_id'].to_i
   proj_new_title = params['new_title'].to_i
   found_proj = Project.find_by_id(proj_id)
   DB.exec("UPDATE projects SET title = #{proj_new_title} WHERE id = #{proj_id};")
   redirect("/projects/#{proj_id}")
 end
-
-
 
 patch('/add_volunteers_to_project/:proj_id') do
   proj_id = params["proj_id"].to_i
@@ -93,7 +90,7 @@ post('/add_project_to_volunteer/:vol_id') do
   erb(:project_assignment)
 end
 
-get('/delete_vol/:vol_id') do
+delete('/delete_vol/:vol_id') do
   vol_id = params['vol_id'].to_i
   found_volunteer = Volunteer.find_by_id(vol_id)
   found_volunteer.delete
@@ -101,7 +98,7 @@ get('/delete_vol/:vol_id') do
   erb(:volunteers_home)
 end
 
-get('/delete_proj/:proj_id') do
+delete('/delete_proj/:proj_id') do
   proj_id = params['proj_id'].to_i
   found_project = Project.find_by_id(proj_id)
   found_project.delete

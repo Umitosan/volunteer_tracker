@@ -86,7 +86,7 @@ describe('delete volunteer', {:type => :feature}) do
     fill_in('name', :with =>'Frankie')
     click_button('Add volunteer')
     click_link('Frankie')
-    click_link('Remove Volunteer')
+    click_button('Remove Volunteer')
     expect(page).not_to(have_content('Frankie'))
   end
 end
@@ -98,7 +98,7 @@ describe('delete project', {:type => :feature}) do
     fill_in('title', :with => 'neighborhood blood-drive')
     click_button('Add project')
     click_link('neighborhood blood-drive')
-    click_link('Remove Project')
+    click_button('Remove Project')
     expect(page).not_to(have_content('neighborhood blood-drive'))
   end
 end

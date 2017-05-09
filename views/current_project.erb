@@ -4,6 +4,7 @@
 
 <div class="center">
   <form action="/project_rename/<%=@found_proj.id%>" method="post">
+    <input type="hidden" name="_method" value="patch">
     <button type="submit" class="btn btn-success">Update Name</button>
   </form>
   <hr>
@@ -40,6 +41,10 @@
 <hr>
 
 <div class="center">
-  <a href="/delete_proj/<%=@found_proj.id%>"><button class="btn btn-warning">Remove Project</button></a>
+  <form action="/delete_proj/<%=@found_proj.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" class="btn btn-warning">Remove Project</button>
+  </form>
+  <br>
   <a href="/"><button class="btn btn-default">Return Home</button></a>
 </div>

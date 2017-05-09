@@ -28,6 +28,10 @@
 
 <hr>
 <div class="center">
-  <a href="/delete_vol/<%=@found_volunteer.id%>"><button class="btn btn-warning">Remove Volunteer</button></a>
+  <form action="/delete_vol/<%=@found_volunteer.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" class="btn btn-warning">Remove Volunteer</button>
+  </form>
+  <br>
   <a href="/"><button class="btn btn-default">Return Home</button></a>
 </div>
