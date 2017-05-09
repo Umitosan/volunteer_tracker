@@ -3,10 +3,8 @@
 <h2><b class="green_text"><%= @found_proj.title %></b></h2>
 
 <div class="center">
-  <form action="index.html" method="post">
-    <label for=""></label>
-    <input type="text" name="" value="">
-    <a href="/delete_proj/<%=@found_proj.id%>"><button class="btn btn-success">Update Name</button></a>
+  <form action="/project_rename/<%=@found_proj.id%>" method="post">
+    <button type="submit" class="btn btn-success">Update Name</button>
   </form>
   <hr>
 </div>

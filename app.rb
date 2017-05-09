@@ -63,6 +63,17 @@ get('/projects/:id') do
 end
 
 
+
+post('project_rename/:proj_id') do
+  proj_id = params['proj_id'].to_i
+  proj_new_title = params['new_title'].to_i
+  found_proj = Project.find_by_id(proj_id)
+  DB.exec("UPDATE projects SET title = #{proj_new_title} WHERE id = #{proj_id};")
+  redirect("/projects/#{proj_id}")
+end
+
+
+
 patch('/add_volunteers_to_project/:proj_id') do
   proj_id = params["proj_id"].to_i
   selected_vol_ids = params['vol_ids']
@@ -72,7 +83,6 @@ patch('/add_volunteers_to_project/:proj_id') do
   end
   redirect("/projects/#{proj_id}")
 end
-
 
 post('/add_project_to_volunteer/:vol_id') do
   proj_id = params['proj_id'].to_i
