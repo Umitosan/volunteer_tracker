@@ -63,10 +63,14 @@ get('/projects/:id') do
 end
 
 
-patch('/add_volunteers_to_project/:id') do
-  proj_id = params["id"].to_i
-
-  redirect("/projects/#{proj.id}")
+patch('/add_volunteers_to_project/:proj_id') do
+  proj_id = params["proj_id"].to_i
+  selected_vol_ids = params['vol_ids']
+  selected_vol_ids.each do |vol_id|
+    volunteer = Volunteer.find_by_id(vol_id.to_i)
+    volunteer.add_project(proj_id)
+  end
+  redirect("/projects/#{proj_id}")
 end
 
 

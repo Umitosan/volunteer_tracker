@@ -12,21 +12,21 @@
 </div>
 
 <% if (@found_volunteers_list.length == 0) %>
-<h5>("<em><%= @found_proj.title %>"</em> - doesn't have any volunteers yet)</h5>
+  <h5>("<em><%= @found_proj.title %>"</em> - doesn't have any volunteers yet)</h5>
 <% else %>
-<h4>Volunteers currently assigned:</h4>
-<ul>
-  <% @volunteers_list.each do |vol| %>
-  <li class="blue_text center"><em><%= vol['name'] %></em></li>
-  <% end %>
-</ul>
+  <h4>Volunteers currently assigned:</h4>
+  <ul>
+    <% @found_volunteers_list.each do |vol| %>
+    <li class="blue_text center"><em><%= vol['name'] %></em></li>
+    <% end %>
+  </ul>
 <% end %>
 
 <hr>
 
 <div class="center">
   <h4>Add more volunteers to the project</h4>
-  <form action="/projects/<%= @found_proj.id %>" method="post">
+  <form action="/add_volunteers_to_project/<%= @found_proj.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
     <% @all_volunteers.each() do |volunteer| %>
     <div class="checkbox">
