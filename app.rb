@@ -62,7 +62,7 @@ get('/projects/:id') do
   erb(:current_project)
 end
 
-############
+### CURRENT_PROJECT.ERB
 patch('project_rename/:proj_id') do
   proj_id = params['proj_id'].to_i
   proj_new_title = params['new_title'].to_i
@@ -81,6 +81,22 @@ patch('/add_volunteers_to_project/:proj_id') do
   redirect("/projects/#{proj_id}")
 end
 
+delete('/delete_proj/:proj_id') do
+  proj_id = params['proj_id'].to_i
+  found_project = Project.find_by_id(proj_id)
+  found_project.delete
+  @all_projects = Project.all
+  erb(:projects_home)
+end
+
+delete('/remove_volunteers_from_project/:proj_id') do
+  proj_id = params["proj_id"].to_i
+  selected_vol_ids = params['vol_ids']
+binding.pry
+  redirect("/projects/#{proj_id}")
+end
+### END CURRENT_PROJECT.ERB
+
 post('/add_project_to_volunteer/:vol_id') do
   proj_id = params['proj_id'].to_i
   vol_id = params['vol_id'].to_i
@@ -96,12 +112,4 @@ delete('/delete_vol/:vol_id') do
   found_volunteer.delete
   @all_volunteers = Volunteer.all
   erb(:volunteers_home)
-end
-
-delete('/delete_proj/:proj_id') do
-  proj_id = params['proj_id'].to_i
-  found_project = Project.find_by_id(proj_id)
-  found_project.delete
-  @all_projects = Project.all
-  erb(:projects_home)
 end

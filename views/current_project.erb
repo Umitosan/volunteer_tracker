@@ -10,27 +10,38 @@
   <hr>
 </div>
 
+<%# CURRENT VOLUNTEERS ON PROJECT%>
 <% if (@found_volunteers_list.length == 0) %>
   <h5>("<em><%= @found_proj.title %>"</em> - doesn't have any volunteers yet)</h5>
 <% else %>
   <h4>Volunteers currently assigned:</h4>
-  <ul>
+  <form action="/remove_volunteers_from_project/<%= @found_proj.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
     <% @found_volunteers_list.each do |vol| %>
-    <li class="blue_text center"><em><%= vol['name'] %></em></li>
+    <div class="green_text center">
+      <div class="checkbox">
+        <label><b>
+          <input type="checkbox" name="vol_ids[]" value="<%= vol['id'] %>"><%= vol['name'] %>
+        </label></b>
+      </div>
+    </div>
     <% end %>
-  </ul>
+    <div class="center">
+      <button class="btn btn-danger" type="submit">Delete Volunteers</button>
+    </div>
+  </form>
 <% end %>
 
 <hr>
-
+<%# ADD VOLUNTEERS TO PROJECT%>
 <div class="center">
   <h4>Add more volunteers to the project</h4>
   <form action="/add_volunteers_to_project/<%= @found_proj.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
-    <% @all_volunteers.each() do |volunteer| %>
+    <% @all_volunteers.each() do |vol| %>
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="vol_ids[]" value="<%= volunteer.id %>"><%= volunteer.name %>
+        <input type="checkbox" name="vol_ids[]" value="<%= vol.id %>"><%= vol.name %>
       </label>
     </div>
     <% end %>
