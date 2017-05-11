@@ -1,16 +1,19 @@
-<h3>Project Status<h3>
+<h2>Project Status<h2>
 <hr>
-<h2><b class="green_text"><%= @found_proj.title %></b></h2>
+<h1><b class="green_text"><%= @found_proj.title %></b></h1>
 
+<%# RENAME PROJECT%>
 <div class="center">
   <form action="/project_rename/<%=@found_proj.id%>" method="post">
     <input type="hidden" name="_method" value="patch">
-    <button type="submit" class="btn btn-success">Update Name</button>
+    <label for="new_title">Rename: </label>
+    <input type="text" name="new_title">
+    <button type="submit" class="btn btn-success">Save</button>
   </form>
   <hr>
 </div>
 
-<%# CURRENT VOLUNTEERS ON PROJECT%>
+<%# CURRENT VOLUNTEERS ON PROJECT + REMOVE %>
 <% if (@found_volunteers_list.length == 0) %>
   <h5>("<em><%= @found_proj.title %>"</em> - doesn't have any volunteers yet)</h5>
 <% else %>
@@ -27,13 +30,13 @@
     </div>
     <% end %>
     <div class="center">
-      <button class="btn btn-danger" type="submit">Delete Volunteers</button>
+      <button class="btn btn-warning" type="submit">Remove Volunteers</button>
     </div>
   </form>
 <% end %>
 
 <hr>
-<%# ADD VOLUNTEERS TO PROJECT%>
+<%# LIST VOLUNTEERS + ADD TO PROJECT %>
 <div class="center">
   <h4>Add more volunteers to the project</h4>
   <form action="/add_volunteers_to_project/<%= @found_proj.id %>" method="post">
@@ -50,11 +53,11 @@
 </div>
 
 <hr>
-
+<%# DELETE ENTIRE PROJECT %>
 <div class="center">
   <form action="/delete_proj/<%=@found_proj.id%>" method="post">
     <input type="hidden" name="_method" value="delete">
-    <button type="submit" class="btn btn-warning">Remove Project</button>
+    <button type="submit" class="btn btn-danger">Remove Project</button>
   </form>
   <br>
   <a href="/"><button class="btn btn-default">Return Home</button></a>

@@ -2,6 +2,17 @@
 <hr>
 <h1 class="green_text"><b><%= @found_volunteer.name %></b></h1>
 
+<%# RENAME VOLUNTEER %>
+<div class="center">
+  <form action="/volunteer_rename/<%= @found_volunteer.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="new_name">Rename: </label>
+    <input type="text" name="new_name">
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+  <hr>
+</div>
+
 <% if (@found_project  == nil) %>
   <h5>( "<em><%= @found_volunteer.name %>"</em> doesn't have a project yet )</h5>
 

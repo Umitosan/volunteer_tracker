@@ -25,19 +25,19 @@ class Volunteer
   end
 
   def update(attr_hash)
-    @name = attr_hash[:name]
-    @id = self.id
-    DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
+# binding.pry
+    if attr_hash.has_key?(:name)
+      @name = attr_hash.fetch(:name)
+      DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
+    end
+    if attr_hash.has_key?(:project_id)
+      @project_id = attr_hash[:project_id]
+      DB.exec("UPDATE volunteers SET project_id = #{@project_id} WHERE id = #{@id};")
+    end
   end
 
   def delete
     DB.exec("DELETE FROM volunteers WHERE id = #{self.id()};")
-  end
-
-  def add_project(project_id)
-    @id = self.id
-    self.project_id = project_id
-    DB.exec("UPDATE volunteers SET project_id = #{project_id} WHERE id = #{@id};")
   end
 
   def self.find_by_id(id)
