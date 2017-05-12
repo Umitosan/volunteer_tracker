@@ -102,3 +102,46 @@ describe('delete project', {:type => :feature}) do
     expect(page).not_to(have_content('neighborhood blood-drive'))
   end
 end
+
+describe('rename project', {:type => :feature}) do
+  it("allows a user to rename a project") do
+    visit('/')
+    click_link('view/add projects')
+    fill_in('title', :with => 'neighborhood blood-drive')
+    click_button('Add project')
+    click_link('neighborhood blood-drive')
+    fill_in('new_title', :with => 'litter patrol')
+    click_button('Save')
+    expect(page).to(have_content('litter patrol'))
+  end
+end
+
+describe('rename volunteer', {:type => :feature}) do
+  it("allows a user to rename a volunteer") do
+    visit('/')
+    click_link('view/add volunteers')
+    fill_in('name', :with => 'Jackie')
+    click_button('Add volunteer')
+    click_link('Jackie')
+    fill_in('new_name', :with => 'Margret')
+    click_button('Save')
+    expect(page).to(have_content('Margret'))
+  end
+end
+
+describe('updating project', {:type => :feature}) do
+  it("allows a user to add multiple volunteers to a project") do
+    visit('/')
+    click_link('view/add volunteers')
+    fill_in('name', :with => 'Jackie')
+    click_button('Add volunteer')
+    click_link('Return Home')
+    click_link('view/add projects')
+    fill_in('title', :with => 'litter patrol')
+    click_button('Add project')
+    click_link('litter patrol')
+    page.check('Jackie')
+    click_button('Add Volunteers')
+    expect(page.find('div', :class => 'green_text').text).to(eq('Jackie'))
+  end
+end
