@@ -13,6 +13,7 @@ _This is a simple app designed to demonstrate the basic implementation of a post
 Web browser with ES6 compatibility
 Ruby 2.3.1
 Bundler
+postgreSQL
 
 ### Installing
 

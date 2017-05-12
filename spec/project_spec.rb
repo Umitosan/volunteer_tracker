@@ -67,7 +67,7 @@ describe('project') do
       test_project1.save
       test_volunteer1 = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
       test_volunteer1.save
-      test_volunteer1.add_project(test_project1.id)
+      test_volunteer1.update({:project_id => test_project1.id})
       found_volunteers = test_project1.get_vols_on_proj
       expect(found_volunteers[0]['project_id'].to_i).to(eq(test_project1.id))
     end

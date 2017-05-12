@@ -46,8 +46,8 @@ describe('Volunteer') do
     it("updates a volunteer in the database with new info") do
       test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
       test_volunteer.save
-      test_volunteer.update({:name => "Meatloaf"})
-      expect(test_volunteer.name).to(eq("Meatloaf"))
+      test_volunteer.update({:name => "Meatloaf", :project_id => 12345})
+      expect([test_volunteer.name, test_volunteer.project_id]).to(eq(["Meatloaf", 12345]))
     end
   end
 
@@ -59,18 +59,6 @@ describe('Volunteer') do
       test_volunteer2.save
       test_volunteer1.delete
       expect(Volunteer.all[0].name).to(eq('Meatloaf'))
-    end
-  end
-
-  describe("#add_project") do
-    it("adds a project id to a volunteer in the database") do
-      test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
-      test_volunteer.save
-      test_project = Project.new({:title => 'plant trees', :id => nil})
-      test_project.save
-      test_volunteer.add_project(test_project.id)
-      pg_results = DB.exec("SELECT * FROM volunteers WHERE id = #{test_volunteer.id};")
-      expect(pg_results[0]['project_id'].to_i).to(eq(test_project.id))
     end
   end
 
@@ -86,12 +74,12 @@ describe('Volunteer') do
   end
 
   describe("get_project_of_vol") do
-    it("finds the single project associated with a given volunteer") do
+    it("finds the single project associated with a volunteer") do
       test_volunteer = Volunteer.new({:name => 'Taylor Swift', :id => nil, :project_id => nil})
       test_volunteer.save
       test_project = Project.new({:title => 'plant trees', :id => nil})
       test_project.save
-      test_volunteer.add_project(test_project.id)
+      test_volunteer.update({:project_id => test_project.id})
       volunteers_project = test_volunteer.get_project_of_vol
       expect(volunteers_project.id).to(eq(test_project.id))
     end
